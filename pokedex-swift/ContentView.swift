@@ -37,8 +37,34 @@ class PokemonViewModel: ObservableObject {
         }.resume()
     }
 }
-    
 
+struct PokemonListResponse: Codable {
+    let results: [Pokemon]
+}
+
+struct ContentView: View {
+    @ObservedObject var viewModel = PokemonViewModel()
+    
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
+                ForEach(viewModel.pokemonList) { pokemon in VStack {
+                    ImageView(imageURL: pokemon.imageURL)
+                        .frame(width: 50, height: 50)
+                    Text(pokemon.name)
+                        .padding(.top, 2)
+                }
+                }
+            }
+        }
+        .onAppear {
+            viewModel.fetchPokemonData()
+        }
+        .navigationTitle("Pokemon List")
+        
+    }
+}
+    
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

@@ -11,7 +11,6 @@
 		503603442A69B50300CB7073 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503603432A69B50300CB7073 /* ContentView.swift */; };
 		503603462A69B50400CB7073 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503603452A69B50400CB7073 /* Assets.xcassets */; };
 		503603492A69B50400CB7073 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503603482A69B50400CB7073 /* Preview Assets.xcassets */; };
-		503603502A69BA7600CB7073 /* PokedexImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036034F2A69BA7600CB7073 /* PokedexImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +19,6 @@
 		503603432A69B50300CB7073 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		503603452A69B50400CB7073 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		503603482A69B50400CB7073 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5036034F2A69BA7600CB7073 /* PokedexImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +53,6 @@
 			children = (
 				503603412A69B50300CB7073 /* pokedex_swiftApp.swift */,
 				503603432A69B50300CB7073 /* ContentView.swift */,
-				5036034F2A69BA7600CB7073 /* PokedexImageView.swift */,
 				503603452A69B50400CB7073 /* Assets.xcassets */,
 				503603472A69B50400CB7073 /* Preview Content */,
 			);
@@ -140,7 +137,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503603502A69BA7600CB7073 /* PokedexImageView.swift in Sources */,
 				503603442A69B50300CB7073 /* ContentView.swift in Sources */,
 				503603422A69B50300CB7073 /* pokedex_swiftApp.swift in Sources */,
 			);
