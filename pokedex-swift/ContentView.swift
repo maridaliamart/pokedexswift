@@ -21,10 +21,11 @@ class PokemonViewModel: ObservableObject {
     
     func fetchPokemonData() {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151") else { return }
-        URLSession.shared.dataTask(with: url) { data, _, error in if let data = data {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let data = data {
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(PokemonListResponse.self, from data)
+                let result = try decoder.decode(PokemonListResponse.self, from: data)
                 DispatchQueue.main.async {
                     self.pokemonList = result.results
                 }
@@ -48,11 +49,12 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
-                ForEach(viewModel.pokemonList) { pokemon in VStack {
-                    ImageView(imageURL: pokemon.imageURL)
+                ForEach(viewModel.pokemonList) { pokemon in
+                    VStack {
+                        ImageView(imageURL: pokemon.imageURL)
                         .frame(width: 50, height: 50)
                     Text(pokemon.name)
-                        .padding(.top, 2)
+                        .padding(.top, 4)
                 }
                 }
             }

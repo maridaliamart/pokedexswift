@@ -5,24 +5,24 @@
 //  Created by Maridalia Martinez on 7/20/23.
 //
 
-import Foundation
+import SwiftUI
 
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
     
-    func fetch Image(from URLString: string) {
+    func fetchImage(from URLString: String) {
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else { return }
             DispatchQueue.main.async {
-                self.image = UIImage(data:data)
+                self.image = UIImage(data: data)
             }
         }.resume()
     }
 }
 
-struct ImageVew: View {
-    @ObservableObject var imageLoader = ImageLoader()
+struct ImageView: View {
+    @ObservedObject var imageLoader = ImageLoader()
     let imageURL: String
     
     init(imageURL: String) {
