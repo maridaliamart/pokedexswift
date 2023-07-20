@@ -51,7 +51,7 @@ struct ContentView: View {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
                 ForEach(viewModel.pokemonList) { pokemon in
                     VStack {
-                        ImageView(imageURL: pokemon.imageURL)
+                 ImageView(imageURL: pokemon.imageURL)
                         .frame(width: 50, height: 50)
                     Text(pokemon.name)
                         .padding(.top, 4)

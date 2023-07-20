@@ -10,7 +10,7 @@ import SwiftUI
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
     
-    func fetchImage(from URLString: String) {
+    func fetchImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else { return }
