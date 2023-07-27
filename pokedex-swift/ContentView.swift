@@ -42,31 +42,46 @@ struct PokemonListResponse: Codable {
     let results: [Pokemon]
 }
 
+//adding state management for handling loading
 struct ContentView: View {
     @ObservedObject var viewModel = PokemonViewModel()
+    @State private var isLoading = false
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
-                ForEach(viewModel.pokemonList, id: \.name) { pokemon in
-                    VStack {
-                        ImageView(imageURL: pokemon.imageURL)
-                            .frame(width: 50, height: 50)
-                        Text(pokemon.name)
-                            .padding(.top, 4)
+        NavigationView{
+            VStack {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
+                            ForEach(viewModel.pokemonList, id: \.name) { pokemon in
+                                VStack {
+                                    ImageView(imageURL: pokemon.imageURL)
+                                        .frame(width: 50, height: 50)
+                                    Text(pokemon.name)
+                                        .padding(.top, 4)
+                                }
+                            }
+                        }
                     }
                 }
             }
+            .navigationTitle("Pokemon List")
         }
         .onAppear {
-            viewModel.fetchPokemonData()
+            isLoading = true
+            viewModel.fetchPokemonData{
+                isLoading = false
+            }
         }
-        .navigationTitle("Pokemon List")
     }
-}
     
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
