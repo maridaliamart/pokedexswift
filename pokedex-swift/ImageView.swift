@@ -25,16 +25,14 @@ struct ImageView: View {
     @ObservedObject var imageLoader = ImageLoader()
     let imageURL: String
     
-    init(imageURL: String) {
-        self.imageURL = imageURL
-        imageLoader.fetchImage(from: imageURL)
-    }
-    
     var body: some View {
         if let image = imageLoader.image {
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .onAppear {
+                    imageLoader.fetchImage(from: imageURL)
+                }
         } else {
             EmptyView()
         }
