@@ -17,10 +17,15 @@ struct Pokemon: Codable {
  
 class PokemonViewModel: ObservableObject {
     @Published var pokemonList: [Pokemon] = []
-    
-    func fetchPokemonData() {
+    //adding a completion closure that gets called when data's fetched
+    func fetchPokemonData(completion: @escaping () -> Void) {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151") else { return }
         URLSession.shared.dataTask(with: url) { data, _, error in
+            defer {
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
             if let data = data {
             do {
                 let decoder = JSONDecoder()
@@ -73,15 +78,15 @@ struct ContentView: View {
         }
         .onAppear {
             isLoading = true
-            viewModel.fetchPokemonData{
+            viewModel.fetchPokemonData {
                 isLoading = false
             }
         }
     }
+}
     
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
         }
     }
-}
