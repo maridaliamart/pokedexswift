@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct Pokemon: Identifiable, Codable {
-    var id = UUID()
+struct Pokemon: Codable {
     let name: String
     let url: String
     var imageURL: String {
@@ -49,13 +48,13 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
-                ForEach(viewModel.pokemonList) { pokemon in
+                ForEach(viewModel.pokemonList, id: \.name) { pokemon in
                     VStack {
-                 ImageView(imageURL: pokemon.imageURL)
-                        .frame(width: 50, height: 50)
-                    Text(pokemon.name)
-                        .padding(.top, 4)
-                }
+                        ImageView(imageURL: pokemon.imageURL)
+                            .frame(width: 50, height: 50)
+                        Text(pokemon.name)
+                            .padding(.top, 4)
+                    }
                 }
             }
         }
@@ -63,7 +62,6 @@ struct ContentView: View {
             viewModel.fetchPokemonData()
         }
         .navigationTitle("Pokemon List")
-        
     }
 }
     
