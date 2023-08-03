@@ -11,7 +11,7 @@ struct Pokemon: Codable {
     let name: String
     let url: String
     var imageURL: String {
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(url.split(separator: "/").dropLast().last!).png"
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png\(url.split(separator: "/").dropLast().last!).png"
     }
 }
  
