@@ -53,7 +53,7 @@ struct ContentView: View {
     @State private var isLoading = false
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack {
                 if isLoading {
                     ProgressView()
@@ -62,18 +62,13 @@ struct ContentView: View {
                 } else {
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
-                            ForEach(viewModel.pokemonList, id: \.name) { pokemon in
-                                VStack {
-                                    ImageView(imageURL: pokemon.imageURL)
-                                        .frame(width: 50, height: 50)
-                                    Text(pokemon.name)
-                                        .padding(.top, 4)
+                            ForEach(viewModel.pokemonList, id: \.name) {
+                                PokemonCell(pokemon: pokemon)
                                 }
                             }
                         }
                     }
                 }
-            }
             .navigationTitle("Pokemon List")
         }
         .onAppear {

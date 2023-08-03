@@ -16,7 +16,7 @@ class pokedex_swiftTests: XCTestCase {
     override func setUp() {
        super.setUp()
         
-        let pokemonViewModel = PokemonViewModel(apiService: MockAPIService(pokemonData: mockPokemonData))
+        let pokemonViewModel = PokemonViewModel(APIService: MockAPIService(pokemonData: mockPokemonData))
         let contentView = ContentView(viewModel: pokemonViewModel)
         let testhost = UIHostingController(rootView: contentView)
         testHost.beginAppearanceTransition(true, animated: false)
@@ -35,7 +35,7 @@ class pokedex_swiftTests: XCTestCase {
         
     func testPokemonView() {
         let pokemonViewModel = PokemonViewModel(apiService: MockAPIService(pokemonData: mockPokemonData))
-        let pokemonView = PokemonView(viewModel: pokemonViewModel)
+        let contentView = ContentView(viewModel: pokemonViewModel)
         
         
         
