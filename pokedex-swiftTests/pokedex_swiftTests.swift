@@ -34,7 +34,7 @@ class pokedex_swiftTests: XCTestCase {
     ]
         
     func testPokemonView() {
-        let pokemonViewModel = PokemonViewModel(apiService: MockAPIService(pokemonData: mockPokemonData))
+        let pokemonViewModel = PokemonViewModel(APIService: MockAPIService(pokemonData: mockPokemonData))
         let contentView = ContentView(viewModel: pokemonViewModel)
         
         

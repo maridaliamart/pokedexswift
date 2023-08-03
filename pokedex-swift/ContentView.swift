@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct Pokemon: Codable {
     let name: String
     let url: String
@@ -62,7 +63,7 @@ struct ContentView: View {
                 } else {
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
-                            ForEach(viewModel.pokemonList, id: \.name) {
+                            ForEach(viewModel.pokemonList, id: \.name) { pokemon in
                                 PokemonCell(pokemon: pokemon)
                                 }
                             }
